@@ -73,20 +73,30 @@
               <ul class="glide__slides">
                 <li class="glide__slide">
                   <div class="card">
-                    <img src="img/about_img.jpg" alt="A photo of me"></img>
-                    <p>Slide 1</p>
+                    <!-- <span class="vertical-alignment"></span> -->
+                      <img src="img/project1.jpeg" alt="A photo of me">
+                        <article>
+                          <p>blabla 1</p>
+                          <p>blabla 2</p>
+                        </article>
+
+                      </img>
+
+                      <!-- <p>Slide 1</p> -->
                   </div>
                 </li>
                 <li class="glide__slide">
                   <div class="card">
-                    <img src="img/about_img.jpg" alt="A photo of me"></img>
-                    <p>Slide 2</p>
+                    <span class="vertical-alignment"></span>
+                      <img src="img/about_img.jpg" alt="A photo of me"></img>
+                      <!-- <p>Slide 2</p> -->
                   </div>
                 </li>
                 <li class="glide__slide">
                   <div class="card">
-                    <img src="img/about_img.jpg" alt="A photo of me"></img>
-                    <p>Slide 3</p>
+                    <span class="vertical-alignment"></span>
+                      <img src="img/about_img.jpg" alt="A photo of me"></img>
+                      <!-- <p>Slide 3</p> -->
                   </div>
                 </li>
               </ul>
@@ -98,19 +108,47 @@
             </div>
 
             <div class="glide__arrows" data-glide-el="controls">
-              <button class="glide__arrow glide__arrow--left" data-glide-dir="<"></button>
-              <button class="glide__arrow glide__arrow--right" data-glide-dir=">"></button>
+              <button class="glide__arrow glide__arrow--left" data-glide-dir="<">❮</button>
+              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">❯</button>
             </div>
           </div>
         </div>
       </section>
       <section id="contact">
         <h2>Contact</h2>
+        <form class="mailform">
+          <div class="text-input-section">
+            <input type="text" name="name" autocomplete="off" required></input>
+            <label for="name">
+              <span class="name-content">Name</span>
+            </label>
+          </div>
+          <div class="text-input-section">
+            <input type="text" name="mail" autocomplete="off" required></input>
+            <label for="mail">
+              <span>Mail</span>
+            </label>
+          </div>
+          <div class="text-input-section">
+            <input type="text" name="object" autocomplete="off" required></input>
+            <label for="object">
+              <span>Object</span>
+            </label>
+          </div>
+          <div class="text-input-section">
+            <textarea type="text" name="content" autocomplete="off" required></textarea>
+          </div>
+          <div class="submit-section">
+            <span class="before-submit"></span>
+            <input type="submit" name="submit" value="Send"></input>
+            <span class="after-submit"></span>
+          </div>
+        </form>
       </section>
     </main>
-    <!-- <footer style="min-height:100vh; background-color:#101212;">
+    <footer style="min-height:100vh; background-color:#101212;">
       FOOTER
-    </footer> -->
+    </footer>
 
     <!--SCRIPTS-->
     <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
@@ -127,11 +165,13 @@
     const config = {
       type:"carousel",
       focusAt:"center",
-      perView:2
+      perView:1
     }
       new Glide('.glide', config).mount();
     </script>
 
     <script type="text/javascript" src="js/brain.js"></script>
+    <script type="text/javascript" src="js/slider_behavior.js"></script>
+    <script type="text/javascript" src="js/smoothscroll.js"></script>
   </body>
 </html>

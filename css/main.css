@@ -9,6 +9,9 @@ html, body{
   width : 100%;
   height : 100%;
 }
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
 .pink{
   color : #D60063;
 }
@@ -140,7 +143,7 @@ h2{
 #about h2{
   line-height: 0;
   margin-top: 3.5rem;
-
+  margin-bottom: 0;
 }
 
 #about h3{
@@ -192,13 +195,198 @@ h2{
   border-top : 3px solid #0892D0;
   border-bottom : 3px solid #0892D0;
 }
+
+
 .projects-glide .card{
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr;
+
   margin:auto;
+  height: 60vh;
+  width : 50vw;
+
+}
+.activeCard{
+  transform: scale(1.13);
+  z-index: 3;
+}
+
+.vertical-alignment{
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
 }
 
 .projects-glide .card img{
   display: block;
   height : 50vh;
-  width:auto;
-    margin:auto;
+  width : 40vw;
+  margin:auto;
+  margin-top: 5vh;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  transition: 0.5s ease;
+  border-radius: 1%;
+  /* border: 3px solid rgba(8, 146, 208, 0.99); */
+  filter : grayscale(0%);
+}
+
+.projects-glide .card article{
+  /* vertical-align: middle; */
+  display: block;
+  margin-top: 5vh;
+  margin-left : auto;
+  margin-right: auto;
+  height : 70vh;
+  width : 30vw;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  transition: 0.5s ease;
+  opacity: 0;
+  text-align: left;
+}
+
+
+#contact form{
+  display: flex;
+  flex-direction: column;
+  width : 40%;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+input:invalid, textarea:invalid {
+    box-shadow:none;
+}
+/* #contact form > div{
+  margin-bottom: 5vh;
+} */
+
+#contact form .text-input-section{
+  position: relative;
+  width:100%;
+}
+
+#contact form .text-input-section input{
+  width:100%;
+  height : 7vh;
+  padding-top:6vh;
+  border:none;
+  background-color: transparent;
+  color : #e1eded;
+}
+
+#contact form label{
+  position: absolute;
+  left : 0;
+  bottom: 0;
+  width:100%;
+  height:100%;
+  border-bottom: 2px solid #e1eded;
+  pointer-events: none;
+}
+
+#contact form label::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left : 0;
+  bottom : -1px;
+  border-bottom: 3px solid #0892D0;
+  transition: transform 300ms ease;
+  transform: translateX(-100%);
+}
+
+#contact form label span{
+  color : #e1eded;
+  position: absolute;
+  left : 0px;
+  bottom : 0px;
+  transition: transform 300ms ease;
+}
+
+#contact form .text-input-section input:focus + label span,
+#contact form .text-input-section input:valid + label span
+{
+  transform: translateY(-130%) scale(0.8);
+  color: #0892D0;
+}
+#contact form .text-input-section input:focus + label,
+#contact form .text-input-section input:valid + label
+{
+  border-bottom: transparent;
+}
+
+#contact form .text-input-section input:focus + label::after,
+#contact form .text-input-section input:valid + label::after
+{
+  transform: translateX(0);
+}
+
+#contact form .text-input-section-content{
+  position: relative;
+  width:100%;
+  height : 10vh;
+}
+
+#contact form .text-input-section textarea{
+  width:100%;
+  height:20vh;
+  border: 2px solid #e1eded;
+  transition: all 300ms ease;
+  background-color: transparent;
+  color : #e1eded;
+  margin: 5vh 0 5vh 0;
+}
+
+#contact form .text-input-section textarea:focus,
+#contact form .text-input-section textarea:valid
+{
+  border: 2px solid #0892D0;
+}
+
+#contact .submit-section{
+  position: relative;
+  display: flex;
+  width : 20%;
+  height : 6vh;
+  overflow: hidden;
+}
+
+#contact .submit-section span{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#contact .submit-section .before-submit{
+  background-color: #0892D0;
+  z-index: -2;
+}
+
+#contact .submit-section .after-submit{
+    background-color: #D60063;
+    z-index: -1;
+    transform: translateX(-100%);
+    transition: .5s ease;
+}
+
+#contact form input[type=submit]{
+  background: transparent;
+  position: absolute;
+  width:100%;
+  height: 6vh;
+  box-shadow: none;
+  border: 2px solid #e1eded;
+  outline: none;
+}
+
+#contact form input[type=submit]:hover + .after-submit{
+  transform: translateX(0);
 }
