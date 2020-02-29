@@ -117,7 +117,8 @@ class Connection{
 }
 
 class Network {
-  constructor(canvas, xn=10, yn=10, x=0, y=0, w=1, h=1){
+  constructor(canvas, xn=10, yn=10, x=0, y=0, w=1, h=1, vertical_offset=0.01,
+  horizontal_offset=0.01, rmin=1.5, rmax=4.5, shape_func=function(n,network){return true;}){
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
     canvas.width = canvas.offsetWidth;
@@ -126,52 +127,52 @@ class Network {
     this.y = y * canvas.offsetHeight;
     this.w = canvas.offsetWidth*w;
     this.h = canvas.offsetHeight*h;
+
     this.nodes = [];
     this.connections = [];
     this.xn = xn;
     this.yn = yn;
-    this.offset = 20;
-    this.threshold = 2.5*this.offset;
+    this.rmin = rmin;
+    this.rmax = rmax;
+    this.vertical_offset = vertical_offset*this.h;
+    this.horizontal_offset = horizontal_offset*this.w;
+    this.threshold = Math.max(this.w/this.xn, this.h/this.yn) + Math.sqrt(2)*Math.max(this.vertical_offset, this.horizontal_offset);
+    // this.threshold = 2*this.vertical_offset + 2*this.horizontal_offset;
+    console.log(this.threshold);
+    this.shape_func = shape_func;
 
     var self = this;
   }
 
   fill_node(){
+
     for(let j=0; j<this.yn; j++){
       for(let i=0; i<this.xn; i++){
-        let n = new Node(this.x + i*this.w/this.xn + (Math.random()*this.offset*2-this.offset), this.y + j*this.h/this.yn + (Math.random()*this.offset*2-this.offset), Math.random()*3+1.5);
-        if(this.inTheBrain(n)){
+        let x = 0;
+        let y = 0;
+        let r = Math.random()*(this.rmax-this.rmin)+this.rmin;
+        if(this.xn !== 1 && this.yn !== 1){
+          x = this.x + i*this.w/(this.xn-1) + (Math.random()*this.horizontal_offset*2-this.horizontal_offset);
+          y = this.y + j*this.h/(this.yn-1) + (Math.random()*this.vertical_offset*2-this.vertical_offset);
+        }else if(this.xn === 1 && this.yn !== 1){
+          x = this.x + this.w/2 + (Math.random()*this.horizontal_offset*2-this.horizontal_offset); //center the xs
+          y = this.y + j*this.h/(this.yn-1) + (Math.random()*this.vertical_offset*2-this.vertical_offset);
+        }else if(this.xn !== 1 && this.yn === 1){
+          x = this.x + i*this.w/(this.xn-1) + (Math.random()*this.horizontal_offset*2-this.horizontal_offset);
+          y = this.y + this.h/2 + (Math.random()*this.vertical_offset*2-this.vertical_offset); //center the ys
+        }else{ // unique Node
+          x = this.x + this.w/2 + (Math.random()*this.horizontal_offset*2-this.horizontal_offset); //center the x
+          y = this.y + this.h/2 + (Math.random()*this.vertical_offset*2-this.vertical_offset); //center the y
+        }
+        let n = new Node(x, y, r);
+        if(this.shape_func(n, this)){
           this.nodes.push(n);
         }
       }
     }
   }
 
-  inel(x, y, ox, oy, a, b){
-    return (((x-ox)/a)**2)+(((y-oy)/b)**2) <= 1;
-  }
 
-  inTheBrain(n){
-        // let n = this.nodes[j*this.xn + i];
-        // let a=this.w/2;
-        // let b=this.h/3;
-        // let ox = this.x + this.w/2;
-        // let oy = this.y + this.h/2;
-        //
-        // return (((n.x-ox)/a)**2 + ((n.y-oy)/b)**2 -1 <= 0.2) || (n.x>(ox+2*(a/5)) && n.x<(ox+3*(a/5)) && n.y>oy && n.y<oy+2*b);
-
-
-        //
-        // return true;
-
-        let fisrt_assert = this.inel(n.x, n.y, this.x+0.18*this.w*1.25, this.y+0.36*this.h*1.25, 0.16*this.w*1.25, 0.22*this.h*1.25);
-        let second_assert = this.inel(n.x, n.y, this.x+0.40*this.w*1.25, this.y+0.38*this.h*1.25, 0.28*this.w*1.25, 0.30*this.h*1.25);
-        let third_assert = this.inel(n.x, n.y, this.x+0.54*this.w*1.25, this.y+0.48*this.h*1.25, 0.08*this.w*1.25, 0.36*this.h*1.25);
-        let fourth_assert = this.inel(n.x, n.y, this.x+0.64*this.w*1.25, this.y+0.44*this.h*1.25, 0.14*this.w*1.25, 0.22*this.h*1.25);
-
-        return fisrt_assert || second_assert || third_assert || fourth_assert;
-        // return true;
-  }
 
 
   connectNode(){
@@ -193,22 +194,18 @@ class Network {
           minus.d = d;
         }
         if(d < this.threshold){
-          // console.log("coucou");
           let c = new Connection(n1, n2);
-          let ok = true;
-          if(ok){
-            co.push(c);
-          }
+          co.push(c);
         }
       }
       // console.log(co.length);
       while(co.length >= 3){
-        // console.log("coucou");
         co.splice(Math.floor(Math.random()*co.length), 1);
       }
       if(co.length === 0){
         co.push(new Connection(n1, minus.n));
       }
+
       co.forEach((conn, k) => {
         this.connections.push(conn);
         conn.sign_neighbors();
@@ -219,12 +216,14 @@ class Network {
 
   update(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.nodes.forEach((item, i) => {
+
+    this.connections.forEach((item, i) => {
 
         item.draw(this.ctx);
 
     });
-    this.connections.forEach((item, i) => {
+
+    this.nodes.forEach((item, i) => {
 
         item.draw(this.ctx);
 
@@ -235,43 +234,72 @@ class Network {
     });
   }
 
-  mouseHandler(e){
-    let rect = this.canvas.getBoundingClientRect();
-    let mouseX = e.clientX - rect.left;
-    let mouseY = e.clientY - rect.top;
-    let minDist = 100000;
-    let minDistNode = -1;
-    this.nodes.forEach((item, i) => {
-      let dist = Math.sqrt((mouseX-item.x)*(mouseX-item.x) + (mouseY-item.y)*(mouseY-item.y));
-      if(dist < minDist){
-        minDist = dist;
-        minDistNode = i;
-      }
-      item.desilluminate();
-    });
-    if(e.type === 'mousemove'){
-      this.nodes[minDistNode].illuminate();
-      this.nodes[minDistNode].illuminate_neighbors();
-    }else if(e.type === 'click'){
-      // this.nodes[minDistNode].illuminate();
-      this.nodes[minDistNode].launch_travel(100);
-    }
-    // this.update();
+  launch_from_node(i){
+    this.nodes[i].launch_travel(Math.floor(Math.random()*25+10));
   }
 
   random_launch(){
     let i = Math.floor(Math.random()*this.nodes.length);
-    this.nodes[i].launch_travel(Math.floor(Math.random()*25+5));
+    this.launch_from_node(i);
+  }
+
+  closest_node(x, y){
+    let minDist = 100000;
+    let minDistNode = -1;
+    this.nodes.forEach((item, i) => {
+      let dist = Math.sqrt((x-item.x)*(x-item.x) + (y-item.y)*(y-item.y));
+      if(dist < minDist){
+        minDist = dist;
+        minDistNode = i;
+      }
+    });
+    return this.nodes[minDistNode];
+  }
+  desilluminate(i=null){
+    if(i !== null){
+      this.nodes[i].desilluminate();
+    }else{
+      this.nodes.forEach((item, i) => {
+        item.desilluminate();
+      });
+    }
   }
 }
 
+function inel(x, y, ox, oy, a, b){
+    return (((x-ox)/a)**2)+(((y-oy)/b)**2) <= 1;
+  }
+
+function brain_shape(node, network){
+      // let n = this.nodes[j*this.xn + i];
+      // let a=this.w/2;
+      // let b=this.h/3;
+      // let ox = this.x + this.w/2;
+      // let oy = this.y + this.h/2;
+      //
+      // return (((n.x-ox)/a)**2 + ((n.y-oy)/b)**2 -1 <= 0.2) || (n.x>(ox+2*(a/5)) && n.x<(ox+3*(a/5)) && n.y>oy && n.y<oy+2*b);
+
+
+      //
+      // return true;
+
+      let fisrt_assert = inel(node.x, node.y, network.x+0.18*network.w*1.25, network.y+0.36*network.h*1.25, 0.16*network.w*1.25, 0.22*network.h*1.25);
+      let second_assert = inel(node.x, node.y, network.x+0.40*network.w*1.25, network.y+0.38*network.h*1.25, 0.28*network.w*1.25, 0.30*network.h*1.25);
+      let third_assert = inel(node.x, node.y, network.x+0.54*network.w*1.25, network.y+0.48*network.h*1.25, 0.08*network.w*1.25, 0.36*network.h*1.25);
+      let fourth_assert = inel(node.x, node.y, network.x+0.64*network.w*1.25, network.y+0.44*network.h*1.25, 0.14*network.w*1.25, 0.22*network.h*1.25);
+
+      return fisrt_assert || second_assert || third_assert || fourth_assert;
+      // return true;
+}
+
 $(function(){
+  ///*
   var $canvas = $("#brain-canvas");
   var $home = $("#home");
 
   const canvas_h = $canvas.get(0).scrollHeight
 
-  var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75);
+  var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75, 0.03, 0.03, 1.5, 4.5, brain_shape);
   network.fill_node();
   network.connectNode();
   network.update();
@@ -280,11 +308,22 @@ $(function(){
   }, 2000);
 
   $home.get(0).addEventListener('mousemove', function(e){
-    network.mouseHandler(e);
+    const rect = network.canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    network.desilluminate();
+    let cn = network.closest_node(mouseX, mouseY);
+    cn.illuminate();
+    cn.illuminate_neighbors();
   });
 
   $home.get(0).addEventListener('click', function(e){
-    network.mouseHandler(e);
+    const rect = network.canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    network.desilluminate();
+    let cn = network.closest_node(mouseX, mouseY);
+    cn.launch_travel(100);
   });
 
   var scrollOpacity = function(){
@@ -294,10 +333,11 @@ $(function(){
   }
 
   scrollOpacity();
-  
+
   window.addEventListener('scroll', function(e){
     scrollOpacity();
   });
 
+  //*/
 
 });

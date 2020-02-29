@@ -10,8 +10,7 @@ $(function (){
     $(this).children("article").css("opacity", '1');
 
     $(this).children().on("click", function(e){
-      console.log(this);
-      // alert("website in progress!");
+      alert("website in progress!");
     });
   });
 

@@ -196,6 +196,68 @@ h2{
   border-bottom : 3px solid #0892D0;
 }
 
+/* works */
+
+#works .work-section{
+  display: block;
+  position: relative;
+  width:100%;
+  height:60vh;
+}
+
+#works .canvas-container{
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  width : 100%;
+  height : 60%;
+
+  margin: auto;
+  margin-bottom: 10%;
+}
+
+#works .canvas-container canvas{
+  width:100%;
+  height:100%;
+  background-color: #101212;
+}
+
+#works .worklist{
+  display: none;
+  list-style : none;
+}
+
+/* #works .worklist .work{
+  width:100%;
+  height:100%;
+  background-color: rgba(16, 18, 18, 0.9);
+  border: 2px solid #D60063;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* projects */
 
 .projects-glide .card{
   display: grid;
@@ -265,10 +327,21 @@ input:invalid, textarea:invalid {
 /* #contact form > div{
   margin-bottom: 5vh;
 } */
+#contact form input, #contact form textarea{
+  font-family: Quicksand;
+  font-size: 1em;
+}
+
+
 
 #contact form .text-input-section{
   position: relative;
   width:100%;
+}
+
+#contact form .text-input-section label{
+  font-family: Quicksand;
+  font-size: 1.1em;
 }
 
 #contact form .text-input-section input{
@@ -335,6 +408,7 @@ input:invalid, textarea:invalid {
 }
 
 #contact form .text-input-section textarea{
+  resize:none;
   width:100%;
   height:20vh;
   border: 2px solid #e1eded;
@@ -384,9 +458,13 @@ input:invalid, textarea:invalid {
   height: 6vh;
   box-shadow: none;
   border: 2px solid #e1eded;
+  color: #e1eded;
   outline: none;
+  cursor: pointer;
 }
-
+#contact form input[type=submit]:hover{
+  color: #e1eded;
+}
 #contact form input[type=submit]:hover + .after-submit{
   transform: translateX(0);
 }
