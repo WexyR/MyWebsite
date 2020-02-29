@@ -63,7 +63,7 @@ class Node {
   travel(n, from=null){
     let ns = [...this.neighbors];
     if(from !== null){
-      ns.splice(ns.indexOf(from), 1);
+      ns.splice(ns.indexOf(from), 1); //no U-turn
     }
     if(ns.length === 0){
       return -1;
@@ -172,10 +172,7 @@ class Network {
     }
   }
 
-
-
-
-  connectNode(){
+  connect_node(){
     for(let i in this.nodes){
       let n1 = this.nodes[i];
       let co = [];
@@ -215,8 +212,6 @@ class Network {
   }
 
   update(){
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
     this.connections.forEach((item, i) => {
 
         item.draw(this.ctx);
@@ -228,9 +223,20 @@ class Network {
         item.draw(this.ctx);
 
     });
+
+  }
+
+  clear_canvas(){
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  auto_update(){
+    this.clear_canvas();
+    this.update();
+
     let self = this;
     requestAnimationFrame(function(){
-      self.update();
+      self.auto_update();
     });
   }
 
@@ -253,7 +259,7 @@ class Network {
         minDistNode = i;
       }
     });
-    return this.nodes[minDistNode];
+    return [minDistNode, this.nodes[minDistNode]];
   }
   desilluminate(i=null){
     if(i !== null){
@@ -271,17 +277,6 @@ function inel(x, y, ox, oy, a, b){
   }
 
 function brain_shape(node, network){
-      // let n = this.nodes[j*this.xn + i];
-      // let a=this.w/2;
-      // let b=this.h/3;
-      // let ox = this.x + this.w/2;
-      // let oy = this.y + this.h/2;
-      //
-      // return (((n.x-ox)/a)**2 + ((n.y-oy)/b)**2 -1 <= 0.2) || (n.x>(ox+2*(a/5)) && n.x<(ox+3*(a/5)) && n.y>oy && n.y<oy+2*b);
-
-
-      //
-      // return true;
 
       let fisrt_assert = inel(node.x, node.y, network.x+0.18*network.w*1.25, network.y+0.36*network.h*1.25, 0.16*network.w*1.25, 0.22*network.h*1.25);
       let second_assert = inel(node.x, node.y, network.x+0.40*network.w*1.25, network.y+0.38*network.h*1.25, 0.28*network.w*1.25, 0.30*network.h*1.25);
@@ -301,8 +296,8 @@ $(function(){
 
   var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75, 0.03, 0.03, 1.5, 4.5, brain_shape);
   network.fill_node();
-  network.connectNode();
-  network.update();
+  network.connect_node();
+  network.auto_update();
   setInterval(function(){
     network.random_launch();
   }, 2000);
@@ -312,7 +307,7 @@ $(function(){
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     network.desilluminate();
-    let cn = network.closest_node(mouseX, mouseY);
+    let cn = network.closest_node(mouseX, mouseY)[1];
     cn.illuminate();
     cn.illuminate_neighbors();
   });
@@ -322,7 +317,7 @@ $(function(){
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     network.desilluminate();
-    let cn = network.closest_node(mouseX, mouseY);
+    let cn = network.closest_node(mouseX, mouseY)[1];
     cn.launch_travel(100);
   });
 

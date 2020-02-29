@@ -218,22 +218,26 @@ h2{
   margin-bottom: 10%;
 }
 
-#works .canvas-container canvas{
+#works canvas{
   width:100%;
   height:100%;
   background-color: #101212;
+  cursor:pointer;
 }
 
 #works .worklist{
   display: none;
+  position: relative;
   list-style : none;
+  pointer-events: none;
 }
 
-/* #works .worklist .work{
-  width:100%;
-  height:100%;
-  background-color: rgba(16, 18, 18, 0.9);
+/* #works .worklist li{
+  position: absolute;
+  height:40%;
+  background-color: rgba(160, 18, 18, 0.9);
   border: 2px solid #D60063;
+  z-index: 1
 } */
 
 
