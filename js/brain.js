@@ -1,5 +1,5 @@
 class Node {
-  constructor(x, y, r){
+  constructor(x, y, r, color="#0892D0", active_color="#e1eded"){
     this.x = x;
     this.y = y;
     this.r = r;
@@ -11,6 +11,8 @@ class Node {
     this.has_given = false;
     this.n = 0;
     this.from = null;
+    this.color = color;
+    this.active_color = active_color;
   }
 
   draw(ctx){
@@ -26,9 +28,9 @@ class Node {
     }
     ctx.beginPath();
     if(this.is_illuminated()){
-      ctx.fillStyle = '#e1eded';
+      ctx.fillStyle = this.active_color;
     }else{
-      ctx.fillStyle = '#0892D0';
+      ctx.fillStyle = this.color;
     }
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
     ctx.fill();
@@ -79,11 +81,13 @@ class Node {
 }
 
 class Connection{
-  constructor(left, right){
+  constructor(left, right, color="#0892D0", active_color="#e1eded"){
     this.nodes = new Set([left, right]);
     if(left === right){
       console.error("same node for a connection");
     }
+    this.color = color;
+    this.active_color = active_color;
   }
 
   difference(other){
@@ -104,9 +108,9 @@ class Connection{
     let left = arrayset[0];
     let right = arrayset[1];
     if(left.is_illuminated() && right.is_illuminated()){
-      ctx.strokeStyle = '#e1eded';
+      ctx.strokeStyle = this.active_color;
     }else{
-      ctx.strokeStyle = '#0892D0';
+      ctx.strokeStyle = this.color;
     }
     ctx.lineWidth = 1;
     ctx.moveTo(left.x, left.y);
@@ -118,7 +122,8 @@ class Connection{
 
 class Network {
   constructor(canvas, xn=10, yn=10, x=0, y=0, w=1, h=1, vertical_offset=0.01,
-  horizontal_offset=0.01, rmin=1.5, rmax=4.5, shape_func=function(n,network){return true;}){
+  horizontal_offset=0.01, rmin=1.5, rmax=4.5, color="#0892D0", active_color="#e1eded",
+  shape_func=function(n,network){return true;}){
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
     canvas.width = canvas.offsetWidth;
@@ -140,8 +145,8 @@ class Network {
     // this.threshold = 2*this.vertical_offset + 2*this.horizontal_offset;
     console.log(this.threshold);
     this.shape_func = shape_func;
-
-    var self = this;
+    this.color = color;
+    this.active_color = active_color;
   }
 
   fill_node(){
@@ -164,7 +169,7 @@ class Network {
           x = this.x + this.w/2 + (Math.random()*this.horizontal_offset*2-this.horizontal_offset); //center the x
           y = this.y + this.h/2 + (Math.random()*this.vertical_offset*2-this.vertical_offset); //center the y
         }
-        let n = new Node(x, y, r);
+        let n = new Node(x, y, r, this.color, this.active_color);
         if(this.shape_func(n, this)){
           this.nodes.push(n);
         }
@@ -191,7 +196,7 @@ class Network {
           minus.d = d;
         }
         if(d < this.threshold){
-          let c = new Connection(n1, n2);
+          let c = new Connection(n1, n2, this.color, this.active_color);
           co.push(c);
         }
       }
@@ -294,7 +299,7 @@ $(function(){
 
   const canvas_h = $canvas.get(0).scrollHeight
 
-  var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75, 0.03, 0.03, 1.5, 4.5, brain_shape);
+  var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75, 0.03, 0.03, 1.5, 4.5, "#0892D0", "#e1eded", brain_shape);
   network.fill_node();
   network.connect_node();
   network.auto_update();
