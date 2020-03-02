@@ -30,10 +30,10 @@
     color: #e1eded
    }
   .glide__arrow--left {
-    left: 2em; }
+    left: 7%; }
   .glide__arrow--right {
     outline:none;
-    right: 2em; }
+    right: 7%; }
   .glide__arrow--disabled {
     opacity: 0.33; }
 

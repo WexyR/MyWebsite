@@ -47,6 +47,11 @@ header h1 {
   transform: uppercase;
   user-select: none;
 }
+header h1 a{
+  outline: 0;
+  text-decoration: none;
+  color: #e1eded;
+}
 
 header nav {
   flex : 2;
@@ -62,19 +67,69 @@ header nav {
   width : 90%;
 }
 
-li a{
+header li a{
   color : #0892D0;
   text-decoration: none;
   transition: color 700ms ease;
   outline: 0;
 }
 
-li a:hover{
+header li a:hover{
   background: linear-gradient(to right, #e1eded, #0892D0);
   color: #e1eded;
   -webkit-background-clip : text;
   -webkit-text-fill-color : transparent;
 }
+
+#mediasection{
+  position: fixed;
+  /* background-color: #101212; */
+  right:0;
+  top:50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding-left: 5px;
+  z-index: 5;
+}
+#mediasection .arrow{
+  width:100%;
+  color: #e1eded;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+#mediasection .arrow.clicked{
+  /* transform: rotate(180deg); */
+  transform: rotate3D(0,1,0,180deg);
+}
+/* #0077B5 */
+#mediasection ul{
+  list-style: none;
+  border-left: 2px solid #e1eded;
+  transition: all 300ms ease;
+}
+#mediasection ul.clicked{
+  transform: translateX(100%);
+}
+
+#mediasection ul li{
+  padding-left: 5px;
+  padding-right: 5px;
+  /* background-color: #335E5E; */
+}
+#mediasection ul li i{
+  color : #e1eded;
+  opacity: 0.5;
+}
+#mediasection ul li i:hover{
+  opacity: 1;
+}
+#mediasection ul li .github:hover{
+  color: #28A745;
+}
+#mediasection ul li .linkedin:hover{
+  color: #0077B5;
+}
+
 
 section{
   min-height: 100vh;
@@ -241,12 +296,12 @@ h2{
 #works .line-separator{
   display: none;
   width:50%;
-  height: 1px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1.5%;
+  padding-bottom: 1.5%;
   margin-bottom: 3%;
-  border-top: 2px solid #D60063;
+  border-bottom: 2px solid #D60063;
 
 }
 /* #works .infozone::before{
@@ -491,4 +546,12 @@ input:invalid, textarea:invalid {
 }
 #contact form input[type=submit]:hover + .after-submit{
   transform: translateX(0);
+}
+
+footer{
+  height:12vh;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 12vh;
 }

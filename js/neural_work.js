@@ -23,6 +23,24 @@ function update_summerize(target, src=null){
 
 }
 
+function infobubble(canvas, mouseX, mouseY, content, color="#e1eded", bgcolor="#101212"){
+  let ctx = canvas.getContext("2d");
+  const height = canvas.offsetHeight;
+
+  ctx.font = 0.08*height+"px Quicksand";
+
+  ctx.fillStyle = bgcolor;
+  console.log(ctx.measureText(content));
+  ctx.fillRect(mouseX-3, mouseY+3, ctx.measureText(content).width+3, -0.08*height-3);
+
+
+
+  ctx.fillStyle = color;
+  ctx.textAlign = "left";
+  ctx.font = 0.08*height+"px Quicksand";
+  ctx.fillText(content, mouseX, mouseY);
+}
+
 
 
 $(function(){
@@ -56,9 +74,10 @@ $(function(){
     work_network.update();
 
     console.log($works.eq(cn_index).attr("date"));
-    display_content($work_canvas.get(0), cn_index, cn, $works.eq(cn_index));
+    display_content(canvas, cn_index, cn, $works.eq(cn_index));
     $("#works .line-separator").css("display","block");
     update_summerize($summerize, $works.eq(cn_index));
+    // infobubble(canvas, mouseX, mouseY, "learn more");
   });
 
   $work_canvas.on('click', function(e){

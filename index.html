@@ -18,15 +18,16 @@
     <link rel="stylesheet" href="css/glide.theme.css">
     <!-- css imports -->
     <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://kit.fontawesome.com/9337e96ac6.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
-      <h1 id="myname">Romain</h1>
+      <h1 id="myname">
+        <a href="#home">Romain</a>
+      </h1>
       <nav>
         <ul class="nav-links">
-          <li>
-            <a href="#home">Home</a>
-          </li>
           <li>
             <a href="#about">About Me</a>
           </li>
@@ -42,6 +43,19 @@
         </ul>
       </nav>
     </header>
+    <aside id="mediasection">
+      <div class="arrow">
+        <i class="fas fa-angle-double-right fa-lg"></i>
+      </div>
+      <ul class="medias">
+        <li>
+          <a href="https://github.com/WexyR/"><i class="fab fa-github-square fa-3x github"></i></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/romain-biannic-42a07a1a1"><i class="fab fa-linkedin fa-3x linkedin"></i></a>
+        </li>
+      </ul>
+    </aside>
     <main id="main">
       <section id="home">
         <div class="canvas-container">
@@ -56,7 +70,7 @@
         <h3>Myself</h3>
         <div class="about-grid">
           <div class="borders" data-aos="fade-down"></div>
-          <article class="inner-text" data-aos="fade-left" data-aos-delay="500">I'm a developerleqfugvoqufgoqufgqlfg lE FGUEF lu uf uf LGF Lflgqlqglq fgL L U LU L flg qluehlqujfl
+          <article class="inner-text" data-aos="fade-left" data-aos-delay="400">I'm a developerleqfugvoqufgoqufgqlfg lE FGUEF lu uf uf LGF Lflgqlqglq fgL L U LU L flg qluehlqujfl
           </article>
           <img src="img/about_img.jpg" alt="A photo of me" data-aos="fade-left"></img>
         </div>
@@ -80,7 +94,7 @@
             <li><a href="html/work_CERV.html", title="VR-Mars", date="2019"></a></li>
             <li><a href="html/work_CERV.html", title="VR-Mars", date="2019"></a></li>
           </ul>
-          <div class="line-separator"></div>
+          <p class="line-separator">Click on the node to learn more about it!</p>
           <p class="infozone"></p>
         </div>
       </section>
@@ -165,8 +179,8 @@
         </form>
       </section>
     </main>
-    <footer style="min-height:100vh; background-color:#101212;">
-      FOOTER
+    <footer>
+      <p>© Romain Biannic</p>
     </footer>
 
     <!--SCRIPTS-->
@@ -191,6 +205,7 @@
 
     <script type="text/javascript" src="js/brain.js"></script>
     <script type="text/javascript" src="js/neural_work.js"></script>
+    <script type="text/javascript" src="js/medias.js"></script>
     <script type="text/javascript" src="js/slider_behavior.js"></script>
     <script type="text/javascript" src="js/smoothscroll.js"></script>
   </body>

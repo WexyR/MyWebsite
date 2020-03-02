@@ -16,23 +16,54 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- css imports -->
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/work.css">
+
+    <script src="https://kit.fontawesome.com/9337e96ac6.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
-      <h1><-</h1>
+      <button onclick="goBack()">❮</button>
     </header>
+    <aside id="mediasection">
+      <div class="arrow">
+        <i class="fas fa-angle-double-right fa-lg"></i>
+      </div>
+      <ul class="medias">
+        <li>
+          <a href="https://github.com/WexyR/"><i class="fab fa-github-square fa-3x github"></i></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/romain-biannic-42a07a1a1"><i class="fab fa-linkedin fa-3x linkedin"></i></a>
+        </li>
+      </ul>
+    </aside>
     <main id="main">
       <h2>VR-Mars</h2>
       <article>
-        BLABLA
+        <div class="prenstation-img">
+          <img src="../img/brain.png" alt=""></img>
+        </div>
+        <div class="presentation1">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae suscipit tellus mauris a. Tincidunt dui ut ornare lectus sit amet est. Quis commodo odio aenean sed. Nisl suscipit adipiscing bibendum est ultricies.</p>
+          <p>Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.</p>
+        </div>
+        <div class="presentation2">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae suscipit tellus mauris a. Tincidunt dui ut ornare lectus sit amet est. Quis commodo odio aenean sed. Nisl suscipit adipiscing bibendum est ultricies.</p>
+          <p>Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.</p>
+        </div>
+        <div class="details">
+          <p>Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.Convallis aenean et tortor at risus viverra adipiscing at in. Scelerisque eu ultrices vitae auctor eu augue. Tellus pellentesque eu tincidunt tortor aliquam nulla. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Magna eget est lorem ipsum dolor.
+          </p>
+        </div>
       </article>
     </main>
-    <footer style="min-height:100vh; background-color:#101212;">
-      FOOTER
+    <footer>
+      <p>© Romain Biannic</p>
     </footer>
 
     <!--SCRIPTS-->
-    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../js/medias.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
@@ -40,6 +71,11 @@
         duration:1000,
         // once:true
       });
+    </script>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
     </script>
   </body>
 </html>
