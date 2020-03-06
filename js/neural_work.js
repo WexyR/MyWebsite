@@ -8,9 +8,9 @@ function display_content(canvas, node_index, node, content){
   ctx.fillStyle = "#e1eded";
   ctx.textAlign = "center";
   ctx.font = 0.1*height+"px Dancing Script";
-  ctx.fillText(content.attr("date"), x, y+0.21*height);
+  ctx.fillText(content.find("time").text(), x, y+0.21*height);
   ctx.font = 0.15*height+"px Dancing Script";
-  ctx.fillText(content.attr("title"), x, y-0.15*height);
+  ctx.fillText(content.find("h4").text(), x, y-0.15*height);
 }
 
 function update_summerize(target, src=null){
@@ -46,7 +46,7 @@ function infobubble(canvas, mouseX, mouseY, content, color="#e1eded", bgcolor="#
 $(function(){
   const $work_canvas = $("#works canvas");
   const canvas = $work_canvas.get(0);
-  const $works = $("#works .worklist li a");
+  const $works = $("#works .worklist li");
   const $summerize = $("#works .infozone");
 
 
@@ -73,10 +73,9 @@ $(function(){
     work_network.clear_canvas();
     work_network.update();
 
-    console.log($works.eq(cn_index).attr("date"));
     display_content(canvas, cn_index, cn, $works.eq(cn_index));
     $("#works .line-separator").css("display","block");
-    update_summerize($summerize, $works.eq(cn_index));
+    update_summerize($summerize, $works.eq(cn_index).find("a"));
     // infobubble(canvas, mouseX, mouseY, "learn more");
   });
 
@@ -88,7 +87,7 @@ $(function(){
     let cn_info = work_network.closest_node(mouseX, mouseY);
     let cn_index = cn_info[0];
     let cn = cn_info[1];
-    document.location.href=$works.eq(cn_index).attr("href");
+    document.location.href=$works.eq(cn_index).find("a").attr("href");
   });
 
   $work_canvas.on('mouseleave', function(e){

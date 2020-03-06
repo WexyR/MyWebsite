@@ -148,7 +148,7 @@ section{
   z-index : -3;
 }
 #brain-canvas{
-  width : 100%;
+  width : 100vw;
   height : 100vh;
   background : #101212;
   position : fixed;
@@ -177,7 +177,6 @@ section{
   margin-top: 30vh;
 }
 
-
 #about{
   width : 80%;
   margin: auto;
@@ -189,7 +188,7 @@ h2{
   font-family: Quicksand;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 5rem;
+  font-size: 3.5rem;
   color: #e1eded;
   opacity: 0.8;
   text-align: center;
@@ -203,8 +202,8 @@ h2{
 
 #about h3{
   font-family: Dancing Script;
-  font-size: 2.2rem;
-  opacity: 0.9;
+  font-size: 1.5rem;
+  opacity: 0.99;
   line-height: 0;
   margin-bottom: 5rem;
   color : #0892D0;
@@ -232,9 +231,19 @@ h2{
   grid-column-start : 1;
   grid-row-start : 1;
   margin : 0 25% 0 5%;
-  text-align : left;
   align-self : center;
+  background-color: transparent;
+  text-align : left;
+}
+.about-grid .inner-text p{
+  display: block;
   background-color: #101212;
+  text-align : left;
+}
+.about-grid .inner-text p a{
+  color : #0892D0;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .about-grid img{
@@ -262,7 +271,7 @@ h2{
 
 #works .canvas-container{
   width : 100%;
-  height : 60%;
+  height : 50%;
 
   /* margin-left: auto; */
 }
@@ -300,41 +309,9 @@ h2{
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 1.5%;
-  margin-bottom: 3%;
+  margin-bottom: 1.5%;
   border-bottom: 2px solid #D60063;
-
 }
-/* #works .infozone::before{
-  content: "";
-  position: absolute;
-  width:50vw;
-  height: 100%;
-  top:0;
-  left:0;
-  right:0;
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* projects */
 
