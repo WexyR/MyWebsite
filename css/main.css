@@ -359,6 +359,8 @@ h2{
   position: relative;
   text-align: center;
   color: #e1eded;
+  font-family: Quicksand;
+  font-size: 1em;
 }
 #skills figure .graph.fg li .graphbar{
   position: absolute;
@@ -391,6 +393,8 @@ h2{
   flex: 1;
   position: relative;
   color: #e1eded;
+  font-family: Quicksand;
+  font-size: 1em;
 }
 #skills figure .graph.bg li .graphline{
   position: absolute;

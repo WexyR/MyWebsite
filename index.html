@@ -91,7 +91,6 @@
           <ul>
             <li value="devlang" class="selected">Development languages</li>
             <li value="softwares">Softwares</li>
-            <li value="test">test</li>
           </ul>
         </div>
         <div class="graphsection">
@@ -119,44 +118,78 @@
             <div class="graph fg">
               <ul name="devlang">
                 <li>
-                  <div class="graphbar" style="height:100%">
-                    <div class="circle"></div>
-                  </div>
-                  <div class="skill">First</div>
-                </li>
-                <li>
                   <div class="graphbar" style="height:50%">
                     <div class="circle"></div>
                   </div>
-                  <div class="skill">Second</div>
+                  <div class="skill">HTML+CSS</div>
                 </li>
                 <li>
-                  <div class="graphbar" style="height:70%">
+                  <div class="graphbar" style="height:58%">
                     <div class="circle"></div>
                   </div>
-                  <div class="skill">Third</div>
+                  <div class="skill">Javascript</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:85%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Python</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:65%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">C/C++</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:58%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">C#</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:37.5%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Java</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:15%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Bash</div>
                 </li>
               </ul>
               <ul name="softwares">
                 <li>
-                  <div class="graphbar" style="height:100%">
+                  <div class="graphbar" style="height:70%">
                     <div class="circle"></div>
                   </div>
-                  <div class="skill">First</div>
+                  <div class="skill">Catia V5</div>
                 </li>
                 <li>
-                  <div class="graphbar" style="height:50%">
+                  <div class="graphbar" style="height:63%">
                     <div class="circle"></div>
                   </div>
-                  <div class="skill">Second</div>
+                  <div class="skill">Unity 3D</div>
                 </li>
-              </ul>
-              <ul name="test">
                 <li>
-                  <div class="graphbar" style="height:100%">
+                  <div class="graphbar" style="height:15%">
                     <div class="circle"></div>
                   </div>
-                  <div class="skill">First</div>
+                  <div class="skill">Blender</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:35%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Illustrator</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:75%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">LTSpice</div>
                 </li>
               </ul>
             </div>
@@ -224,7 +257,7 @@
       </section>
       <section id="contact">
         <h2>Contact</h2>
-        <form class="mailform">
+        <form class="mailform" action="mailto:romain.biannic@gmail.com" method="GET">>
           <div class="text-input-section">
             <input type="text" name="name" autocomplete="off" required></input>
             <label for="name">
@@ -232,23 +265,23 @@
             </label>
           </div>
           <div class="text-input-section">
-            <input type="text" name="mail" autocomplete="off" required></input>
-            <label for="mail">
+            <input type="email" name="_replyto" autocomplete="off" required></input>
+            <label for="_replyto">
               <span>Mail</span>
             </label>
           </div>
           <div class="text-input-section">
-            <input type="text" name="object" autocomplete="off" required></input>
-            <label for="object">
-              <span>Object</span>
+            <input type="text" name="subject" autocomplete="off" required></input>
+            <label for="subject">
+              <span>Subject</span>
             </label>
           </div>
           <div class="text-input-section">
-            <textarea type="text" name="content" autocomplete="off" required></textarea>
+            <textarea type="text" name="body" autocomplete="off" required></textarea>
           </div>
           <div class="submit-section">
             <span class="before-submit"></span>
-            <input type="submit" name="submit" value="Send"></input>
+            <input type="submit" value="Send"></input>
             <span class="after-submit"></span>
           </div>
         </form>
