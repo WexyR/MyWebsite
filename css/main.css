@@ -54,7 +54,7 @@ header h1 a{
 }
 
 header nav {
-  flex : 2;
+  flex : 3;
 }
 
 .nav-links {
@@ -259,6 +259,156 @@ h2{
   border-top : 3px solid #0892D0;
   border-bottom : 3px solid #0892D0;
 }
+
+/* skills */
+/* #skills .skills-list{
+  display: none;
+}
+
+#skills .canvas-container{
+  width:100%;
+  height:60vh;
+}
+
+#skills canvas{
+  width:100%;
+  height:100%;
+  background: #AAA;
+} */
+
+#skills .tab-select{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#skills .tab-select ul{
+  color: #e1eded;
+  list-style: none;
+  display: flex;
+}
+#skills .tab-select ul li{
+  cursor: pointer;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-color: #0892D0;
+  padding: 5px 20px 5px 20px;
+  background-color: transparent;
+
+  font-family: Quicksand;
+  font-size: 1rem;
+  color: #0892D0;
+  transition: all 300ms ease;
+}
+#skills .tab-select ul li:hover{
+  color: #e1eded;
+}
+#skills .tab-select ul li.selected{
+  color: #e1eded;
+}
+
+#skills .graphsection{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 2px solid #0892D0;
+  padding: 2% 0 2% 0;
+}
+
+#skills figure{
+  width:70%;
+  height:50vh;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#skills figure .graph{
+  position: absolute;
+  left:50%;
+  top: 50%;
+  /* background-color: #777; */
+  width:100%;
+  height:80%;
+  transform: translate(-50%, -50%);
+  border-left: 3px solid #D60063;
+  border-bottom: 3px solid #D60063;
+}
+#skills figure .graph ul{
+  list-style: none;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* align-items: center; */
+}
+#skills figure .graph.bg ul{
+  flex-direction: column;
+}
+#skills figure .graph.fg ul{
+  flex-direction: row;
+  display: none;
+  opacity: 0;
+  transition: opacity 400ms linear;
+}
+#skills figure .graph.fg ul:nth-child(1){
+  display: flex;
+  opacity: 1;
+}
+#skills figure .graph.fg li{
+  flex: 1;
+  position: relative;
+  text-align: center;
+  color: #e1eded;
+}
+#skills figure .graph.fg li .graphbar{
+  position: absolute;
+  width:2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0892D0;
+}
+#skills figure .graph.fg li .graphbar .circle{
+  position: absolute;
+  /* width:20px;
+  height:20px; */
+  padding: 10px;
+  background-color: #0892D0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+#skills figure .graph.fg li .skill{
+  position: absolute;
+  bottom:-30px;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+
+
+#skills figure .graph.bg li{
+  flex: 1;
+  position: relative;
+  color: #e1eded;
+}
+#skills figure .graph.bg li .graphline{
+  position: absolute;
+  width: 100%;
+  border-top: 2px dashed #e1eded;
+  left:0;
+  top:50%;
+}
+#skills figure .graph.bg li .level{
+  position: absolute;
+  left:0;
+  top:50%;
+  transform: translate(-100%,-50%);
+  padding-right: 5%;
+}
+
+
+
 
 /* works */
 

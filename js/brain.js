@@ -143,7 +143,7 @@ class Network {
     this.horizontal_offset = horizontal_offset*this.w;
     this.threshold = Math.max(this.w/this.xn, this.h/this.yn) + Math.sqrt(2)*Math.max(this.vertical_offset, this.horizontal_offset);
     // this.threshold = 2*this.vertical_offset + 2*this.horizontal_offset;
-    console.log(this.threshold);
+    // console.log(this.threshold);
     this.shape_func = shape_func;
     this.color = color;
     this.active_color = active_color;

@@ -29,7 +29,10 @@
       <nav>
         <ul class="nav-links">
           <li>
-            <a href="#about">About Me</a>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
           </li>
           <li>
             <a href="#works">Works</a>
@@ -81,7 +84,84 @@
       </section>
       <section id="skills">
         <h2>Skills</h2>
-        
+        <!-- <div class="canvas-container">
+          <canvas id="skillmap"></canvas>
+        </div> -->
+        <div class="tab-select">
+          <ul>
+            <li value="devlang" class="selected">Development languages</li>
+            <li value="softwares">Softwares</li>
+            <li value="test">test</li>
+          </ul>
+        </div>
+        <div class="graphsection">
+          <figure>
+            <div class="graph bg">
+              <ul>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Machine</div>
+                </li>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Bang-up</div>
+                </li>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Average</div>
+                </li>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Beginner</div>
+                </li>
+              </ul>
+            </div>
+            <div class="graph fg">
+              <ul name="devlang">
+                <li>
+                  <div class="graphbar" style="height:100%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">First</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:50%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Second</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:70%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Third</div>
+                </li>
+              </ul>
+              <ul name="softwares">
+                <li>
+                  <div class="graphbar" style="height:100%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">First</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:50%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Second</div>
+                </li>
+              </ul>
+              <ul name="test">
+                <li>
+                  <div class="graphbar" style="height:100%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">First</div>
+                </li>
+              </ul>
+            </div>
+          </figure>
+        </div>
       </section>
       <section id="works">
         <h2>Works</h2>
@@ -201,6 +281,7 @@
     <script type="text/javascript" src="js/brain.js"></script>
     <script type="text/javascript" src="js/neural_work.js"></script>
     <script type="text/javascript" src="js/medias.js"></script>
+    <script type="text/javascript" src="js/skills.js"></script>
     <script type="text/javascript" src="js/slider_behavior.js"></script>
     <script type="text/javascript" src="js/smoothscroll.js"></script>
   </body>

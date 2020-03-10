@@ -14,7 +14,6 @@ function display_content(canvas, node_index, node, content){
 }
 
 function update_summerize(target, src=null){
-  console.log(target);
   if(src === null){
     target.html("");
   }else{
@@ -30,7 +29,6 @@ function infobubble(canvas, mouseX, mouseY, content, color="#e1eded", bgcolor="#
   ctx.font = 0.08*height+"px Quicksand";
 
   ctx.fillStyle = bgcolor;
-  console.log(ctx.measureText(content));
   ctx.fillRect(mouseX-3, mouseY+3, ctx.measureText(content).width+3, -0.08*height-3);
 
 
