@@ -1,16 +1,21 @@
 
-function display_content(canvas, node_index, node, content){
+function display_content(canvas, node, content, color="#e1eded"){
 
   const height = canvas.offsetHeight;
   let ctx = canvas.getContext("2d");
   let x = node.x;
   let y = node.y;
-  ctx.fillStyle = "#e1eded";
+  ctx.fillStyle = color;
   ctx.textAlign = "center";
   ctx.font = 0.1*height+"px Dancing Script";
   ctx.fillText(content.find("time").text(), x, y+0.21*height);
   ctx.font = 0.15*height+"px Dancing Script";
   ctx.fillText(content.find("h4").text(), x, y-0.15*height);
+}
+function display_all_contents(canvas, node_array, $ul_content){
+  node_array.forEach(function(node, i){
+    display_content(canvas, node, $ul_content.eq(i), "#0892D0")
+  });
 }
 
 function update_summerize(target, src=null){
@@ -58,6 +63,7 @@ $(function(){
   // setInterval(function(){
   //   work_network.launch_from_node(0);
   // }, 2000);
+  display_all_contents(canvas, work_network.nodes, $works);
 
   $work_canvas.on('mousemove', function(e){
     const rect = work_network.canvas.getBoundingClientRect();
@@ -71,8 +77,9 @@ $(function(){
     work_network.clear_canvas();
     work_network.update();
 
-    display_content(canvas, cn_index, cn, $works.eq(cn_index));
-    $("#works .line-separator").css("display","block");
+    display_content(canvas, cn, $works.eq(cn_index));
+    $("#works .infocanvas.click").css("display","block");
+    $("#works .infocanvas.hover").css("display","none");
     update_summerize($summerize, $works.eq(cn_index).find("a"));
     // infobubble(canvas, mouseX, mouseY, "learn more");
   });
@@ -95,7 +102,9 @@ $(function(){
     work_network.desilluminate();
     work_network.clear_canvas();
     work_network.update();
-    $("#works .line-separator").css("display","none");
+    display_all_contents(canvas, work_network.nodes, $works);
+    $("#works .infocanvas.click").css("display","none");
+    $("#works .infocanvas.hover").css("display","block");
     update_summerize($summerize);
   });
 
