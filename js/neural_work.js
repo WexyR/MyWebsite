@@ -77,6 +77,7 @@ $(function(){
     work_network.clear_canvas();
     work_network.update();
 
+    display_all_contents(canvas, work_network.nodes, $works);
     display_content(canvas, cn, $works.eq(cn_index));
     $("#works .infocanvas.click").css("display","block");
     $("#works .infocanvas.hover").css("display","none");
