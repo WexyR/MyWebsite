@@ -1,5 +1,5 @@
 class Node {
-  constructor(x, y, r, color="#0892D0", active_color="#e1eded"){
+  constructor(x, y, r, color="#0892D0", active_color="#e1eded", alpha_min=0.2, alpha_max = 1){
     this.x = x;
     this.y = y;
     this.r = r;
@@ -11,8 +11,9 @@ class Node {
     this.has_given = false;
     this.n = 0;
     this.from = null;
-    this.color = color;
-    this.active_color = active_color;
+    this.alpha = Math.random()*(alpha_max-alpha_min) + alpha_min;
+    this.color = hexToRGBA(color, this.alpha);
+    this.active_color = hexToRGBA(active_color, this.alpha);
   }
 
   draw(ctx){
@@ -81,13 +82,13 @@ class Node {
 }
 
 class Connection{
-  constructor(left, right, color="#0892D0", active_color="#e1eded"){
+  constructor(left, right){
     this.nodes = new Set([left, right]);
     if(left === right){
       console.error("same node for a connection");
     }
-    this.color = color;
-    this.active_color = active_color;
+    this.angle = Math.atan((right.y-left.y)/(right.x-left.x));
+    // console.log(left.x, left.y, right.x, right.y);
   }
 
   difference(other){
@@ -107,14 +108,29 @@ class Connection{
     let arrayset = [...this.nodes];
     let left = arrayset[0];
     let right = arrayset[1];
+    let grad= ctx.createLinearGradient(left.x, left.y, right.x, right.y);
     if(left.is_illuminated() && right.is_illuminated()){
-      ctx.strokeStyle = this.active_color;
+      grad.addColorStop(0, left.active_color);
+      grad.addColorStop(1, right.active_color);
     }else{
-      ctx.strokeStyle = this.color;
+      grad.addColorStop(0, left.color);
+      grad.addColorStop(1, right.color);
     }
+    ctx.strokeStyle = grad;
     ctx.lineWidth = 1;
-    ctx.moveTo(left.x, left.y);
-    ctx.lineTo(right.x, right.y);
+    if(left.x < right.x && left.y > right.y){
+      ctx.moveTo(left.x+Math.cos(this.angle)*left.r, left.y+Math.sin(this.angle)*left.r);
+      ctx.lineTo(right.x-Math.cos(this.angle)*right.r, right.y-Math.sin(this.angle)*right.r);
+    }else if(left.x < right.x && left.y < right.y){
+      ctx.moveTo(left.x+Math.cos(this.angle)*left.r, left.y+Math.sin(this.angle)*left.r);
+      ctx.lineTo(right.x-Math.cos(this.angle)*right.r, right.y-Math.sin(this.angle)*right.r);
+    }else if(left.x > right.x && left.y > right.y){
+      ctx.moveTo(left.x-Math.cos(this.angle)*left.r, left.y-Math.sin(this.angle)*left.r);
+      ctx.lineTo(right.x+Math.cos(this.angle)*right.r, right.y+Math.sin(this.angle)*right.r);
+    }else if(left.x > right.x && left.y < right.y){
+      ctx.moveTo(left.x-Math.cos(this.angle)*left.r, left.y-Math.sin(this.angle)*left.r);
+      ctx.lineTo(right.x+Math.cos(this.angle)*right.r, right.y+Math.sin(this.angle)*right.r);
+    }
     ctx.stroke();
   }
 
@@ -123,7 +139,7 @@ class Connection{
 class Network {
   constructor(canvas, xn=10, yn=10, x=0, y=0, w=1, h=1, vertical_offset=0.01,
   horizontal_offset=0.01, rmin=1.5, rmax=4.5, color="#0892D0", active_color="#e1eded",
-  shape_func=function(n,network){return true;}){
+  alpha_min=1, alpha_max=1.3, shape_func=function(n,network){return true;}){
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
     canvas.width = canvas.offsetWidth;
@@ -147,6 +163,8 @@ class Network {
     this.shape_func = shape_func;
     this.color = color;
     this.active_color = active_color;
+    this.alpha_min = alpha_min;
+    this.alpha_max = alpha_max;
   }
 
   fill_node(){
@@ -169,7 +187,7 @@ class Network {
           x = this.x + this.w/2 + (Math.random()*this.horizontal_offset*2-this.horizontal_offset); //center the x
           y = this.y + this.h/2 + (Math.random()*this.vertical_offset*2-this.vertical_offset); //center the y
         }
-        let n = new Node(x, y, r, this.color, this.active_color);
+        let n = new Node(x, y, r, this.color, this.active_color, this.alpha_min, this.alpha_max);
         if(this.shape_func(n, this)){
           this.nodes.push(n);
         }
@@ -196,7 +214,7 @@ class Network {
           minus.d = d;
         }
         if(d < this.threshold){
-          let c = new Connection(n1, n2, this.color, this.active_color);
+          let c = new Connection(n1, n2);
           co.push(c);
         }
       }
@@ -279,7 +297,7 @@ class Network {
 
 function inel(x, y, ox, oy, a, b){
     return (((x-ox)/a)**2)+(((y-oy)/b)**2) <= 1;
-  }
+}
 
 function brain_shape(node, network){
 
@@ -291,6 +309,17 @@ function brain_shape(node, network){
       return fisrt_assert || second_assert || third_assert || fourth_assert;
       // return true;
 }
+function hexToRGBA(hex, alpha=0) {
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+
+    if (alpha) {
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    } else {
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+    }
+}
 
 $(function(){
   ///*
@@ -299,7 +328,7 @@ $(function(){
 
   const canvas_h = $canvas.get(0).scrollHeight
 
-  var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75, 0.03, 0.03, 1.5, 4.5, "#0892D0", "#e1eded", brain_shape);
+  var network = new Network($canvas.get(0), 35, 35, 0.4, 0.15, 0.45, 0.75, 0.03, 0.03, 1.5, 4.5, "#0892D0", "#e1eded", 0.2, 1, brain_shape);
   network.fill_node();
   network.connect_node();
   network.auto_update();
