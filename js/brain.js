@@ -1,5 +1,7 @@
 class Node {
   constructor(x, y, r, color="#0892D0", active_color="#e1eded", alpha_min=0.2, alpha_max = 1){
+    this.ox = x;
+    this.oy = y
     this.x = x;
     this.y = y;
     this.r = r;
@@ -14,6 +16,10 @@ class Node {
     this.alpha = Math.random()*(alpha_max-alpha_min) + alpha_min;
     this.color = hexToRGBA(color, this.alpha);
     this.active_color = hexToRGBA(active_color, this.alpha);
+  }
+  update_position(){
+    // this.x += Math.sin((new Date()).valueOf() + this.x);
+    // this.y += Math.sin((new Date()).valueOf() + this.y);
   }
 
   draw(ctx){
@@ -235,17 +241,17 @@ class Network {
   }
 
   update(){
-    this.connections.forEach((item, i) => {
-
-        item.draw(this.ctx);
-
-    });
-
     this.nodes.forEach((item, i) => {
-
-        item.draw(this.ctx);
-
+        item.update_position();
     });
+    this.connections.forEach((item, i) => {
+        item.draw(this.ctx);
+    });
+    this.nodes.forEach((item, i) => {
+      item.draw(this.ctx);
+    });
+
+
 
   }
 
