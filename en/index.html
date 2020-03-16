@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Romain Biannic</title>
+
+    <!-- alternate -->
+    <link rel="alternate" hreflang="en" href="en/index.html">
+    <link rel="alternate" hreflang="x-default" href="index.html">
+    <link rel="alternate" hreflang="fr" href="fr/index.html">
+
+    <!-- FONTS imports-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="../css/fonts.css">
+    <!-- extern imports -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/glide.core.css">
+    <link rel="stylesheet" href="../css/glide.theme.css">
+    <!-- css imports -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <script src="https://kit.fontawesome.com/9337e96ac6.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <h1 id="myname">
+        <a href="#home">Romain</a>
+      </h1>
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#works">Works</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside id="mediasection">
+      <div class="arrow">
+        <i class="fas fa-angle-double-right fa-lg"></i>
+      </div>
+      <ul class="medias">
+        <li>
+          <a href="https://github.com/WexyR/"><i class="fab fa-github-square fa-3x github"></i></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/romain-biannic-42a07a1a1"><i class="fab fa-linkedin fa-3x linkedin"></i></a>
+        </li>
+      </ul>
+    </aside>
+    <main id="main">
+      <section id="home">
+        <div class="canvas-container">
+          <div id="bg"></div>
+          <canvas id="brain-canvas"></canvas>
+        </div>
+        <h1>Hello<span class="pink">.</span></h1>
+      </section>
+      <section id="about">
+        <!-- <div class="separator"></div> -->
+        <h2>About</h2>
+        <h3>Myself</h3>
+        <div class="about-grid">
+          <div class="borders" data-aos="fade-down"></div>
+          <article class="inner-text" data-aos="fade-left" data-aos-delay="400">
+            <p>I'm a 4th-year student in ENIB, an enginneering graduate school, and i'm learning computer science, electronics and mechanics</p>
+            <p>I love programming and want to work and research in the field of mixed reality</p>
+            <p>I also love playing the piano, video games and challenging myself on all kind of projects !</p>
+            <p>Check out <a href="../etc/CV_Romain_Biannic.pdf" target="_blank">my résumé</a></p>
+          </article>
+          <img src="../img/about_img.jpg" alt="A photo of me" data-aos="fade-left"></img>
+        </div>
+      </section>
+      <section id="skills">
+        <h2>Skills</h2>
+        <!-- <div class="canvas-container">
+          <canvas id="skillmap"></canvas>
+        </div> -->
+        <div class="tab-select">
+          <ul>
+            <li value="devlang" class="selected">Development languages</li>
+            <li value="softwares">Softwares</li>
+          </ul>
+        </div>
+        <div class="graphsection">
+          <figure>
+            <div class="graph bg">
+              <ul>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Machine</div>
+                </li>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Bang-up</div>
+                </li>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Average</div>
+                </li>
+                <li>
+                  <div class="graphline"></div>
+                  <div class="level">Beginner</div>
+                </li>
+              </ul>
+            </div>
+            <div class="graph fg">
+              <ul name="devlang">
+                <li>
+                  <div class="graphbar" style="height:50%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">HTML+CSS</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:58%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Javascript</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:85%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Python</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:65%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">C++</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:47%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">C</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:37.5%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Java</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:15%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Bash</div>
+                </li>
+              </ul>
+              <ul name="softwares">
+                <li>
+                  <div class="graphbar" style="height:70%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Catia V5</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:63%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Unity 3D</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:15%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Blender</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:35%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">Illustrator</div>
+                </li>
+                <li>
+                  <div class="graphbar" style="height:75%">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="skill">LTSpice</div>
+                </li>
+              </ul>
+            </div>
+          </figure>
+        </div>
+      </section>
+      <section id="works">
+        <h2>Works</h2>
+        <div class="work-section">
+          <div class="canvas-container">
+            <canvas id="neuralWork"/>
+          </div>
+          <ul class="worklist">
+            <li>
+              <h4>Heol</h4>
+              <time>2018</time>
+              <a href="work_template.html">Heol is the solar race car of the compagny Ecosolar which i worked for as an intern. My work consisted in programming its dashboard so the pilot can overview the car sensors.</a>
+            </li>
+            <li>
+              <h4>TAP ton code</h4>
+              <time>2019</time>
+              <a href="work_template.html">TAP ton code is a big project as part of my studies, whose goal is to introduce 9-year-old pupils to programming, by building an arcade machine.</a>
+            </li>
+            <li>
+              <h4>VR-Mars</h4>
+              <time>2019</time>
+              <a href="work_template.html">VR-Mars is a research project of the European Centre of Virtual Reality (CERV) in Brest. Its goal is to find a way to provid medical assistance to an isolated group far away (spacionauts on Mars). My work, as an intern, was modeling and set up two 3D scenes (with Unity) and programming the sending and the reception of messages.</a>
+            </li>
+          </ul>
+          <p class="infocanvas hover">Hover a node to learn a few about a work project!</p>
+          <p class="infocanvas click line-separator">Click on the node to learn more about it!</p>
+          <p class="infozone"></p>
+        </div>
+      </section>
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-glide">
+          <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide">
+                  <div class="card">
+                    <h4>My Website</h4>
+                    <img src="../img/website.png" alt="A screenshot of this website">
+                      <article>
+                        <p>I think you already have a clue of how my website is.</p>
+                        <p>My website is a big project I started at the beginning of 2020. I wanted something to show my works and personnal projects, so I built my own website.</p>
+                        <p>This website is written only in HTML, CSS & JS. The libraries I used are Glider.js (for this slider) and Three.js (for 3D presentation).</p>
+                        <p>It's still in progress, all the pages are not filled up and it's not responsive yet, but I plan to do so rapidly.</p>
+                        <p>If you want to know how I ended up with this design and how I built it, click below on learn more.</p>
+                      </article>
+                    </img>
+                    <div class="forwarding">
+                      <a href="https://github.com/WexyR/WexyR.github.io" target="_blank">See code</a>
+                      <a href="#projects" disabled>Learn more</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="card">
+                    <h4>The Survival Game</h4>
+                    <img src="../img/TSG_1.PNG" alt="A screenshot of The Survival Game">
+                      <article>
+                        <p>The Survival Game is the first game I developed. I wrote it in 2015 in java with Processing3. I presented it for my Baccalauréat diploma and got 20 out of 20!</p>
+                        <p>This game is inspired by Friendlystrike 3, it's a 2D multyplayer shooter game where all the player share the same keyboard.</p>
+                        <p>By making this, I learned oriented-object programming and all the basis I needed.</p>
+                      </article>
+                    </img>
+                    <div class="forwarding">
+                      <a href="https://www.github.com/WexyR/KNIL" target="_blank">See code</a>
+                      <!-- <a href="#projects">Learn more</a> -->
+                    </div>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="card">
+                    <h4>KNIL Dungeon</h4>
+                    <img src="../img/KNIL_presentation.png" alt="A screenshot of KNIL Dungeon">
+                      <article>
+                        <p>KNIL is a french linux console RPG I've done with a schoolmate as a school project (made in python 2).</p>
+                        <p>You are the new hero of a town where cityzen need your help and send you look for items in the dungeon just aside the town.</p>
+                        <p>All the quests, dialogs, NPCs, and map contents are discribed in xml data files. Therefore, they can be easily modified to make your own console RPG.</p>
+                      </article>
+                    </img>
+                    <div class="forwarding">
+                      <a href="https://www.github.com/WexyR/KNIL" target="_blank">See code</a>
+                      <!-- <a href="#projects">Learn more</a> -->
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              <button class="glide__bullet" data-glide-dir="=0"></button>
+              <button class="glide__bullet" data-glide-dir="=1"></button>
+              <button class="glide__bullet" data-glide-dir="=2"></button>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+              <button class="glide__arrow glide__arrow--left" data-glide-dir="<">❮</button>
+              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">❯</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <form class="mailform" action="https://formspree.io/myypzrry" method="POST">
+          <div class="text-input-section">
+            <input type="text" name="name" autocomplete="off" required></input>
+            <label for="name">
+              <span class="name-content">Name</span>
+            </label>
+          </div>
+          <div class="text-input-section">
+            <input type="email" name="_replyto" autocomplete="off" required></input>
+            <label for="_replyto">
+              <span>Mail</span>
+            </label>
+          </div>
+          <div class="text-input-section">
+            <input type="text" name="subject" autocomplete="off" required></input>
+            <label for="subject">
+              <span>Subject</span>
+            </label>
+          </div>
+          <div class="text-input-section">
+            <textarea type="text" name="body" autocomplete="off" required></textarea>
+          </div>
+          <div class="submit-section">
+            <span class="before-submit"></span>
+            <input type="submit" value="Send"></input>
+            <span class="after-submit"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>© Romain Biannic</p>
+    </footer>
+
+    <!--SCRIPTS-->
+    <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset:100,
+        duration:1000,
+        // once:true
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+    const config = {
+      type:"carousel",
+      focusAt:"center",
+      perView:1
+    }
+      new Glide('.glide', config).mount();
+    </script>
+
+    <script type="text/javascript" src="../js/brain.js"></script>
+    <script type="text/javascript" src="../js/neural_work.js"></script>
+    <script type="text/javascript" src="../js/medias.js"></script>
+    <script type="text/javascript" src="../js/skills.js"></script>
+    <script type="text/javascript" src="../js/slider_behavior.js"></script>
+    <script type="text/javascript" src="../js/smoothscroll.js"></script>
+  </body>
+</html>
