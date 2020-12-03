@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Romain Biannic</title>
+    <!-- FONTS imports-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="../css/fonts.css">
+    <!-- extern imports -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- css imports -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/work.css">
+
+    <script src="https://kit.fontawesome.com/9337e96ac6.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <button onclick="goBack()">❮</button>
+    </header>
+    <aside id="mediasection">
+      <div class="arrow">
+        <i class="fas fa-angle-double-right fa-lg"></i>
+      </div>
+      <ul class="medias">
+        <li>
+          <a href="https://github.com/WexyR/"><i class="fab fa-github-square fa-3x github"></i></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/romain-biannic-42a07a1a1"><i class="fab fa-linkedin fa-3x linkedin"></i></a>
+        </li>
+      </ul>
+    </aside>
+    <main id="main">
+      <h2>VR-Mars</h2>
+      <article>
+        <div class="prenstation-img">
+          <img src="../img/vr_mars_logo.png" alt=""></img>
+        </div>
+        <div class="presentation1">
+            <p>
+              L’hypothèse de départ de VR-MARS est que la réalité virtuelle et les agents conversationnels animés (ACA) permettent d’améliorer la coordination du soin et une meilleure prise de conscience de la situation (Situation Awareness) lors d’un événement médical critique en milieu isolé. Ces deux technologies permettraient de contourner les difficultés de l’éloignement entre une équipe isolée de soignants autour d’un patient et un centre expert de référence.
+            </p>
+            <p>
+              C'est dans le cadre de mon stage technicien que je suis intervenu dans ce projet en concevant les fondations du code pour les environnements virtuels. Mon travail stage s'est donc déroulé au Centre Européen de Réalité Vituel (CERV) de Brest encadré par plusieurs enseignants-chercheurs spécialisés dans ce domaine de recherche.
+            </p>
+        </div>
+        <div class="presentation2">
+        <p>
+          Le contexte de validation de cette hypothèse sera celui d’une mission habitée sur Mars. L’isolement entre soignants et centre expert (centre de supervision) sera soumis à un facteur critique supplémentaire : un isolement temporel, avec délais de communication allant jusqu’à plusieurs dizaines de minutes, lié à la grande distance inter-planétaire. La pertinence d’une assistance cognitive par un ACA pour les astronautes se justifie également par des difficultés propres aux vols spatiaux :
+          <ul>
+            <li>
+              des contraintes physiologiques : l’absence prolongée de gravité planétaire altère de nombreuses fonctions physiologiques. Les effets à long terme des rayonnements cosmiques puissants pourront dégrader le métabolisme cellulaire, le système cardio-vasculaire et immunitaire des membres de l’équipage. La vision et la force musculaire diminuent, et la coordination sensorimotrice est atteinte (Nicogossian et al., 2016). Ces derniers éléments pourraient entraver la bonne réalisation de gestes d’urgence. Les conditions extrêmes, le confinement, la fatigue et l’isolement social peuvent entraîner des symptômes psychiatriques et des erreurs cognitives, notamment en cas de gestion de situations critiques imprévues (Fiore SM et al, 2015).
+            </li>
+            <li>
+              des ressources matérielles et humaines limitées, sans évacuation possible, diminuent les possibilités de prise en charge thérapeutique (Descartin et al., 2015).
+            </li>
+            <li>
+              une contrainte temporelle : les distance importantes allongent les délais de communication avec le centre de contrôle terrestre. Par exemple, ce délai peut atteindre 20 minutes dans chaque direction, entre la Terre et Mars.
+            </li>
+          </ul>
+        </p>
+        </div>
+        <div class="details">
+          
+        </div>
+      </article>
+    </main>
+    <footer>
+      <p>© Romain Biannic</p>
+    </footer>
+
+    <!--SCRIPTS-->
+    <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../js/medias.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset:100,
+        duration:1000,
+        // once:true
+      });
+    </script>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
